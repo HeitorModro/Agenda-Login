@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Agenda de Contatos</title>
+</head>
+<body>
+  
+  <h1>Agenda de Contatos</h1>
+  
+  <!-- Formulário de criação de TODO -->
+  <form action="/create" method= "POST">
+    <input name="name" placeholder="Nome">
+    <input name="email" placeholder='E-mail'>
+    <input name="phone" placeholder='Telefone'>
+    <button type="submit">
+      Adicionar
+    </button>
+
+
+      <!-- Exibição da lista de TODOs -->
+  </form>
+  <ul class="content">
+   {% for todo in contact %}
+     <li>
+       <form action="/update/{{todo.id}}" method= "POST">
+          <input name="name" value="{{todo.name}}">
+          <input name="email" value="{{todo.email}}">
+          <input name="phone" value="{{todo.phone}}">
+          <button type="submit">
+          Editar
+          </button>
+           <a href="/delete/{{ todo.id }}">❌</a>
+  </form>
+
+
+     </li>
+   {% endfor %}
+    
+   </form>
+    {% for x in new_contacts %}
+      <li class="card">
+      <form action="/update/{{ x.id }}" method= "POST">
+        <input name="name" value="{{x.name}}">
+        <input name="email" value="{{x.email}}">
+        <input name="phone" value="{{x.phone}}">
+        <button type="submit">
+          Editar
+        </button>
+      <a href="/delete/{{ x.id }}">❌</a>
+  </form>
+    {% endfor %}
+    
+</ul>
+  
+</body>
+</html>

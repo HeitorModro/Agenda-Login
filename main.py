@@ -118,9 +118,13 @@ def complete(id):
 def update(id):
  if 'user_id' not in session:
    return redirect('/login')
- title = request.form.get('title')
+ name = request.form.get('name')
+ email = request.form.get('email')
+ phone = request.form.get('phone')
  todo = contacts.query.filter_by(id=id).first()
- todo.title = title
+ todo.name = name
+ todo.email = email
+ todo.phone = phone
  db.session.commit()
  return redirect('/')
 

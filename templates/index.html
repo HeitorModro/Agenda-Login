@@ -41,7 +41,7 @@
    {% endfor %}
     
    </form>
-    {% for x in new_contacts %}
+    {% for x in new_todo %}
       <li class="card">
       <form action="/update/{{ x.id }}" method= "POST">
         <input name="name" value="{{x.name}}">
